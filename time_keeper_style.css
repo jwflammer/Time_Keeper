@@ -1,0 +1,142 @@
+QMainWindow#MainWindow {
+    background-color: #1A1A1A;
+    color: white;
+    border: 1px solid antiquewhite;
+    border-radius: 15px;
+}
+QPushButton#close_button {
+    background-color: red;
+    color: black;
+    font-size: 22px;
+    border: 2px solid antiquewhite;
+    border-radius: 14px;
+    padding-top: 0px;
+    padding-bottom: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    max-height: 28px;
+}
+QPushButton#close_button:pressed {
+    background-color: darkred;
+}
+QPushButton#min_button {
+    background-color: #ffa600;
+    color: black;
+    font-size: 24px;
+    border: 2px solid antiquewhite;
+    border-radius: 14px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+    max-height: 28px;
+}
+QPushButton#min_button:pressed {
+    background-color: #bb7900;
+}
+QLabel#app_title_label {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 1px;
+    border: 2px solid white;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+QToolButton#settings_menu_button {
+    color: white;
+    font-size: 32px;
+    border: 2px solid antiquewhite;
+    border-radius: 14px;
+    padding-top: 0px;
+    padding-bottom: 4px;
+    padding-left: 2px;
+    padding-right: 2px;
+    max-width: 28px;
+    max-height: 28px;
+}
+QToolButton#settings_menu_button:pressed {
+    color: #c3c3c3;
+    border-color: #c3c3c3;
+}
+QLineEdit#task_line_edit {
+    background-color: white;
+    color: black;
+    border-radius: 15px;
+    font-size: 20px;
+    padding: 10px;
+}
+QPushButton#start_stop_timer_button {
+    background-color: blue;
+    color: white;
+    border-radius: 15px;
+    font-size: 20px;
+    padding: 15px;
+}
+QPushButton#add_task_button {
+    background-color: #ffa600;
+    color: black;
+    font-size: 24px;
+    border: 2px solid antiquewhite;
+    border-radius: 14px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+    max-height: 28px;
+}
+QPushButton#add_task_button:pressed {
+    background-color: #bb7900;
+}
+QPushButton#remove_task_button {
+    background-color: red;
+    color: black;
+    font-size: 22px;
+    border: 2px solid antiquewhite;
+    border-radius: 14px;
+    padding-top: 0px;
+    padding-bottom: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    max-height: 28px;
+}
+QPushButton#remove_task_button:pressed {
+    background-color: darkred;
+}
+QLabel#date_label {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
+QLabel#timer_label {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    padding-left: 15px;
+}
+QLabel#current_time_label_text {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
+QLabel#current_time_label {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
+QPushButton#settings_menu_button {
+    color: white;
+    font-size: 32px;
+    border: 2px solid antiquewhite;
+    border-radius: 14px;
+    padding-top: 0px;
+    padding-bottom: 4px;
+    padding-left: 2px;
+    padding-right: -12px;
+    text-align: center; /* Align the text to the center of the button */
+}
+QPushButton#settings_menu_button:pressed {
+    color: #c3c3c3;
+    border-color: #c3c3c3;
+}
