@@ -63,6 +63,7 @@ pip install -r requirements.txt
 </code>
 </pre>
 
+
 <h2>Database Setup</h2>
 
 <p>Time Keeper uses a MySQL database to store task information. Here's how to set it up:</p>
