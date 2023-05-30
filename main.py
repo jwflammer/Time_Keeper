@@ -1,3 +1,14 @@
+"""
+********************************************************************************
+*                                                                              *
+*                          TIME KEEPER                                         *
+*                                                                              *
+* Author: John Flammer                                                         *
+* Email: johnf@proficientpc.com                                                *
+* Website: www.proficientpc.com                                                *
+*                                                                              *
+********************************************************************************
+"""
 import os
 import sys
 from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox, QComboBox, QAction
