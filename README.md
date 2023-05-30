@@ -63,20 +63,6 @@ pip install -r requirements.txt
 </code>
 </pre>
 
-<h3>Using Time Keeper</h3>
-
-<p>To use Time Keeper, follow these steps:</p>
-
-<ol>
-  <li>Run the script:</li>
-</ol>
-
-<pre>
-<code>
-python main.py
-</code>
-</pre>
-
 <h2>Database Setup</h2>
 
 <p>Time Keeper uses a MySQL database to store task information. Here's how to set it up:</p>
@@ -138,6 +124,20 @@ cnx = mysql.connector.connect(**config)
 </pre>
 
 <p>Replace <code>your_username</code> and <code>your_password</code> with your MySQL server username and password.</p>
+
+<h3>Using Time Keeper</h3>
+
+<p>To use Time Keeper, follow these steps:</p>
+
+<ol>
+  <li>Run the script:</li>
+</ol>
+
+<pre>
+<code>
+python main.py
+</code>
+</pre>
 
 <ol start="4">
   <li>Use the interface to start and stop tasks.</li>
