@@ -159,9 +159,9 @@ class MainWindow(QMainWindow):
 
     def create_database_connection(self):
         return mysql.connector.connect(
-            host="50.63.143.141",
+            host="192.168.1.1",
             user="johnf_time_keeper0001",
-            password="William34!",
+            password="******",
             database="time_keeper_database"
         )
         
