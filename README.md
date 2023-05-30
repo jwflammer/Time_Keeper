@@ -89,7 +89,7 @@ python main.py
   <li>Fork this repository.</li>
   <li>Create a branch: <code>git checkout -b &lt;branch_name&gt;</code></li>
   <li>Make your changes and commit them: <code>git commit -m '&lt;commit_message&gt;'</code></li>
-  <li>Push to the original branch: <code>git push origin &lt;project_name&gt;/&lt;location&gt;</code></li>
+  <li>Push to the original branch: <code>git push origin &lt;Time Keeper&gt;/&lt;SXSW&gt;</code></li>
   <li>Create the pull request.</li>
 </ol>
 
