@@ -95,4 +95,4 @@ python main.py
 
 <h2>Contact</h2>
 
-<p>If you want to contact me you can reach me at &lt;your_email@domain.com&gt;.</p>
+<p>If you want to contact me you can reach me at &lt;johnf@proficientpc.com&gt;.</p>
