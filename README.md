@@ -77,7 +77,69 @@ python main.py
 </code>
 </pre>
 
+<h2>Database Setup</h2>
+
+<p>Time Keeper uses a MySQL database to store task information. Here's how to set it up:</p>
+
+<ol>
+  <li>Install MySQL Server if you haven't done so already.</li>
+  <li>Create a new database named <code>time_keeper_db</code>:</li>
+</ol>
+
+<pre>
+<code>
+CREATE DATABASE time_keeper_db;
+</code>
+</pre>
+
 <ol start="2">
+  <li>Select the new database:</li>
+</ol>
+
+<pre>
+<code>
+USE time_keeper_db;
+</code>
+</pre>
+
+<ol start="3">
+  <li>Create a new table named <code>tasks</code> with the following schema:</li>
+</ol>
+
+<pre>
+<code>
+CREATE TABLE tasks (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  task_name VARCHAR(255) NOT NULL,
+  start_time TIMESTAMP,
+  duration INT
+);
+</code>
+</pre>
+
+<p>Please replace <code>time_keeper_db</code> and <code>tasks</code> with your actual database and table names if they are different.</p>
+
+<h3>Database Configuration in Application</h3>
+
+<p>In your Python script, make sure to configure the database connection with your MySQL server details:</p>
+
+<pre>
+<code>
+config = {
+  'user': 'your_username',
+  'password': 'your_password',
+  'host': 'localhost',
+  'database': 'time_keeper_db',
+  'raise_on_warnings': True
+}
+
+cnx = mysql.connector.connect(**config)
+</code>
+</pre>
+
+<p>Replace <code>your_username</code> and <code>your_password</code> with your MySQL server username and password.</p>
+
+<ol start="4">
   <li>Use the interface to start and stop tasks.</li>
 </ol>
 
