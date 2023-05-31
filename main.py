@@ -11,6 +11,7 @@
 """
 import os
 import sys
+import csv
 from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox, QComboBox, QAction
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import Qt, QTimer, QTime, QDate, QPoint, QElapsedTimer
@@ -55,6 +56,40 @@ class MainWindow(QMainWindow):
         self.current_time_timer.timeout.connect(self.update_current_time)
         self.current_time_timer.start(1000)
         self.update_current_time()
+        self.action_export_to_file = QAction("Export to File", self)
+        self.settings_menu.addAction(self.action_export_to_file)
+        self.action_export_to_file.triggered.connect(self.export_to_file)
+        
+    def export_to_file(self):
+        db = self.create_database_connection()
+        cursor = db.cursor()
+        sql = "SELECT * FROM tasks"
+        cursor.execute(sql)
+        tasks = cursor.fetchall()
+        # Get column names for the CSV headers
+        column_names = [i[0] for i in cursor.description]
+        cursor.close()
+        db.close()
+        script_dir = os.path.dirname(__file__)
+        file_path = os.path.join(script_dir, 'task_data.csv')
+
+        try:
+            with open(file_path, 'w') as f:
+                writer = csv.writer(f)
+                writer.writerow(column_names)
+                for task in tasks:
+                    # Convert the start_time and end_time to 12 hour format
+                    if not self.action_24hour_format.isChecked():
+                        task = list(task)
+                        if task[2]:  # start_time is not None
+                            task[2] = task[2].strftime('%I:%M:%S %p')
+                        if task[3]:  # end_time is not None
+                            task[3] = task[3].strftime('%I:%M:%S %p')
+                    writer.writerow(task)
+            # Show a message box indicating successful export
+            QMessageBox.information(self, "Export Success", "Data has been successfully exported.")
+        except Exception as e:
+            QMessageBox.critical(self, "Export Error", f"Failed to export data: {e}")
 
     def update_current_time(self):
         if self.action_24hour_format.isChecked():
@@ -128,7 +163,7 @@ class MainWindow(QMainWindow):
                 if self.current_task not in self.task_times:
                     self.task_times[self.current_task] = 0
             self.timer.start(1000)
-            self.start_stop_timer_button.setText('Stop')
+            self.start_stop_timer_button.setText('Pause')  # Change here
             self.start_stop_timer_button.setStyleSheet("background-color: red")
             self.elapsed_timer.start()
             self.start_task()  # Record the start time in database
@@ -172,7 +207,7 @@ class MainWindow(QMainWindow):
         return mysql.connector.connect(
             host="192.168.1.1",
             user="johnf_time_keeper0001",
-            password="******",
+            password="*******",
             database="time_keeper_database"
         )
         
@@ -197,16 +232,18 @@ class MainWindow(QMainWindow):
     def remove_task(self):
         current_index = self.task_comboBox.currentIndex()
         if current_index != -1:
-            task_name = self.task_comboBox.currentText()
-            self.task_comboBox.removeItem(current_index)
-            db = self.create_database_connection()
-            cursor = db.cursor()
-            sql = "DELETE FROM tasks WHERE task_name = %s"
-            val = (task_name,)
-            cursor.execute(sql, val)
-            db.commit()
-            cursor.close()
-            db.close()
+            confirmation = QMessageBox.question(self, 'Confirmation', "Are you sure you want to remove this task?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+            if confirmation == QMessageBox.Yes:
+                task_name = self.task_comboBox.currentText()
+                self.task_comboBox.removeItem(current_index)
+                db = self.create_database_connection()
+                cursor = db.cursor()
+                sql = "DELETE FROM tasks WHERE task_name = %s"
+                val = (task_name,)
+                cursor.execute(sql, val)
+                db.commit()
+                cursor.close()
+                db.close()
     
     def change_task(self):
         new_task = self.task_comboBox.currentText()
